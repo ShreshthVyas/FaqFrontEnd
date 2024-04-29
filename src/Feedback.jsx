@@ -48,7 +48,7 @@ const Feedback = () => {
         </svg> */}
         Feedback ?
       </div>
-      <div class={`${open? "opacity-100" : "opacity-0"} transition-opacity duration-200 flex flex-col justify-center fixed w-11/12 bottom-20 sm:bottom-20 sm:right-20 bg-white z-50 px-6 py-7 rounded-md bg-gray-600 shadow-lg sm:w-72`}>
+      <div class={`${open? "opacity-100" : "opacity-0"} transition-opacity duration-200 flex flex-col justify-center fixed w-11/12 bottom-20 sm:bottom-20 sm:right-20  z-50 px-6 py-7 rounded-md bg-gray-700 shadow-lg sm:w-72`}>
         {submitted? (
           <div class={`h-64 flex flex-col justify-between`}>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 self-center" fill="none" viewBox="0 0 24 24" stroke="#34d399">
