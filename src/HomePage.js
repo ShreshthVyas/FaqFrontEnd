@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import FeedbackWidget from './Feedback';
 
 
 const FAQPage = () => {
@@ -25,6 +26,11 @@ const FAQPage = () => {
 
   const handleSearchChange = event => {
     setSearchQuery(event.target.value);
+  };
+
+  const handleSearchSubmit = event => {
+    event.preventDefault(); // Prevent form submission
+    handleSearchClick();
   };
 
   const handleSearchClick = () => {
@@ -71,13 +77,21 @@ const FAQPage = () => {
   return (
     <div className="max-h-screen flex flex-col items-center justify-center h-screen bg-white overflow-auto">
       <header className="w-full ">
+      <div className="absolute top-2 right-2 flex items-center">
+      <a href="https://youtube.com/@chromebookindia?si=RDdUKVaNAQB_EzoP" target="_blank" rel="noopener noreferrer">
+        <img src="/youtube.svg" alt="Youtube" className="w-8 h-8 mr-5" />
+      </a>
+      <a href="https://www.instagram.com/chromebook_townhouse?igsh=MW9kNzZ5c2wyeXNqbw==" target="_blank" rel="noopener noreferrer">
+        <img src="/instagram.svg" alt="Instagram" className="w-8 h-8" />
+      </a>
+    </div>
       <div className="flex flex-col items-center"> 
       <img src="/chromebook.jpg" alt="Chromebook" className="w-84 h-24 mr-1" />
         <h1 className="text-2xl font-serif text-center text-slate-500 "> FAQs</h1>
         </div>
-        
       </header>
       <div className="w-full max-w-lg  p-4  shadow-md rounded-lg mt-4 flex items-center flex-col">
+      <form onSubmit={handleSearchSubmit}>
         <div className='mt-3 sm:flex sm:items-center'>
         <input
           type="text"
@@ -87,12 +101,12 @@ const FAQPage = () => {
           className=" w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-3 leading-5 placeholder-gray-500 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
         />
         <button
-          onClick={handleSearchClick}
           className=" flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
         >
           Search
         </button>
         </div>
+        </form>
         <div className='w-full mt-4'>
         {isSearching && (
         <div className="w-full max-w-xl overflow-y-auto">
@@ -110,6 +124,7 @@ const FAQPage = () => {
           ))}
         </div>
       )}
+      <FeedbackWidget />
       </div>
       </div>
     </div>
